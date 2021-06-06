@@ -1,19 +1,26 @@
 package ru.tinkoff.moshkovtinkofftest.ui.main
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import ru.tinkoff.data.model.Gif
+import ru.tinkoff.domain.gif.GetGifsUseCase
 
-class PageViewModel : ViewModel() {
+class PageViewModel(private val gifsUseCase: GetGifsUseCase) : ViewModel() {
 
-    private val _index = MutableLiveData<Int>()
-    val text: LiveData<String> = Transformations.map(_index) {
-        "Hello world from section: $it"
-    }
+    private lateinit var path: String
 
-    fun setIndex(index: Int) {
-        _index.value = index
-    }
+	private val _gifsList = MutableLiveData<List<Gif>>()
+	val gifsList = _gifsList
+
+	var gifsPage = 0
+	var gifNumber = 0
+	val gifs = mutableListOf<Gif>()
+
+    fun setPath(str: String) { path = str }
+
+	fun requestGifs(onError: (t: Throwable) -> Unit) = gifsUseCase.execute(
+		onNext = { _gifsList.postValue(it) },
+		onError = onError,
+		params = Pair(path, gifsPage)
+	)
 }

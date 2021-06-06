@@ -5,6 +5,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import ru.tinkoff.data.entity.developerslife.DevelopersLifeAnswerEntity
 
+val API_PATHS = listOf("latest", "hot", "top")
+
 internal interface DevelopersLifeApi {
 
 	@GET("{type}/{page}?json=true")
