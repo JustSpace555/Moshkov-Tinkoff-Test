@@ -1,0 +1,4 @@
+rootProject.name = "Moshkov Tinkoff Test"
+include ':Presentation'
+include ':Data'
+include ':Domain'
