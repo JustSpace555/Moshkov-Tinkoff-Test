@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Developers Life</string>
+    <string name="tab_latest">Последние</string>
+    <string name="tab_top">Лучшие</string>
+    <string name="tab_hot">Горячие</string>
+    <string name="internet_error">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
+    <string name="reload">ПОВТОРИТЬ</string>
+    <string name="empty_error">Ооой, кажется тут пусто</string>
+</resources>
